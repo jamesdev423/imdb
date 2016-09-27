@@ -9,11 +9,11 @@ class MoviesController < ApplicationController
 	end
 
 	def new
-		@movie = Movie.new
+		@movie = current_user.play.build
 	end
 
 	def create
-		@movie = Movie.new(movie_params)
+		@movie = current_user.play.build(movie_params)
 
 		if @movie.save
 			redirect_to root_path
